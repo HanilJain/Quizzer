@@ -1,8 +1,7 @@
 {% extends 'User/base.html' %}
 
 {% block content %}
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    vaScript and jQuery:
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
     document.addEventListener('DOMContentLoaded', () => {
         const timeLeftDisplay = document.querySelector('#time-left');
         const startbtn = document.querySelector('.start-button');
@@ -23,6 +22,8 @@
     }
     startbtn.addEventListener('click', countDown)
     });
+    
+    </script>
 
    {% for i in question %}
    
