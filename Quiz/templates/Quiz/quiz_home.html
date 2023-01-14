@@ -1,0 +1,29 @@
+{% extends 'User/base.html'%}
+{% load static %}
+{% block content %}
+    
+    {% for i in quiz %}
+        <link rel="stylesheet" type="text/css" href="{% static 'Quiz/quiz_home.css' %}">
+        <div class="box">
+            <div class="container">
+                <div class="row">
+                    
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    
+                            <div class="box-part text-center">
+                                         
+                                <div class="title">
+                                    <h4>{{i.name}}</h4>
+                                </div>
+                                
+                                <div class="text">
+                                    <span>{{i.desc}}</span>
+                                </div>
+                                
+                                <button class='btn btn-outline-info' href="{% url 'quiz-instruction' i.id %}">View Instruction</button>
+                                
+                            </div>
+                        </div>	
+    {% endfor %}
+ 
+{% endblock content %}

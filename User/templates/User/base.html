@@ -1,0 +1,71 @@
+{% load static %}<!-- for loading of static folder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Adding bootstrap -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--Required meta tags-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<!--Optional JavaScript-->
+<!--JQuery first, then Popper.js , then Bootstarp JS-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<!--this is used to style the web page from css which is stored in static folder >> blog >> main.css-->
+<link rel="stylesheet" type="text/css" href="{% static 'User/main.css' %}">
+    {% if title %}
+      <title>Quiz-{{title}}</title>
+    {% else %}
+      <title>Quiz</title>
+    {% endif %}
+
+</head>
+<body>
+    <!--navigator snippet using bootstrap from navigation.html-->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="#">Quizzer</a><!--add name on ribbion-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'quiz-home' %}">Quizes</a> <!--adds Blog button and directs towards it , using (% url 'unique-name'%) directs it towards them.-->
+                <a class="nav-item nav-link" href="#">Login</a> <!--add about button and directs towards it -->
+                <a class="nav-item nav-link" href="#">Sign-Up</a>
+                <a class="nav-item nav-link" href="#">Quiz Master</a>
+              </div>
+              <!-- Navbar Right Side -->
+              
+              <div class="navbar-nav">
+               <!-- {% if user.is_authenticated %} -->
+                <!--  <a class="nav-item nav-link" href="#">Logout</a>
+                  <a class="nav-item nav-link" href="#">Profile</a>
+                  <a class="nav-item nav-link" href="#">New Post</a> -->
+               <!-- {% else %} -->
+                <!--  <a class="nav-item nav-link" href="#">Login</a>
+                  <a class="nav-item nav-link" href="#">Register</a> -->
+               <!-- {% endif %} -->
+              
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>
