@@ -1,0 +1,18 @@
+{% extends "User/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  	<div class="content-Section">
+    <!--takes data in POST format and gives additional security-->
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4"> New Question </legend>
+				{{q_form | crispy }}<!-- form.as_p this render the page in paragraph from-->
+				{{a_form | crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">POST</button>
+			</div>
+		</form>
+  	</div>
+{% endblock content %}

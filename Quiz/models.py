@@ -1,18 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 
 # Create your models here.
 class Quiz(models.Model):
     name = models.CharField(max_length=50)
     desc = models.CharField(max_length=500)    
     number_of_questions = models.IntegerField(default=1)
-    time = models.IntegerField(help_text="Duration of the quiz in seconds", default="1")
+    time = models.IntegerField(help_text="Set time for the test in seconds")
     
     def __str__(self):
         return self.name
 
     def get_questions(self):
         return self.question_set.all()
+    
+    def get_absolute_url(self):    
+        return reverse('new-ques' , kwargs={'id' : self.pk})
+    
     
 class Question(models.Model):
     content = models.CharField(max_length=200)
@@ -23,6 +29,8 @@ class Question(models.Model):
     
     def get_answers(self):
         return self.answer_set.all()
+    
+    
     
     
 class Answer(models.Model):
